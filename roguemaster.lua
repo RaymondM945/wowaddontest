@@ -9,7 +9,7 @@ local f = CreateFrame("Frame")
 local currentFollowTarget = nil
 f:SetScript("OnUpdate", function(self, elapsed)
     box1.texture:SetColorTexture(0, 0, 0, 1)
-     local skilluse= IsUsableSpell("Sinister Strike")
+     local skilluse= IsUsableSpell("Claw")
 
     if IsInGroup() then
          
