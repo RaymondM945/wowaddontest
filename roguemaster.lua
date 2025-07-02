@@ -20,8 +20,11 @@ f:SetScript("OnUpdate", function(self, elapsed)
 
         if UnitExists("target") and health == maxHealth then
             print("Your target is at full health.")
-            
+            box1.texture:SetColorTexture(1, 1, 0, 1)
        
+        elseif not (UnitExists("target") and UnitExists("party1target")) then
+               print("you are not targeting the leader target.")
+                box1.texture:SetColorTexture(0, 1, 1, 1)
         elseif not IsCurrentSpell("Attack") then
              print("You are not auto-attacking.")
                 box1.texture:SetColorTexture(0, 1, 0, 1)
@@ -35,10 +38,10 @@ f:SetScript("OnUpdate", function(self, elapsed)
 
 
                 if comboPoints >= 3 then
-                    print("can cast eviscerate!")
+                    print("can cast bite!!")
                     box1.texture:SetColorTexture(1, 0, 0, 1)
                 else 
-                    print("You have enough energy for Sinister Strike!")
+                    print("You have enough energy for Claw!")
                     box1.texture:SetColorTexture(0, 0, 1, 1)
                 end
 
