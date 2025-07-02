@@ -10,10 +10,11 @@ local currentFollowTarget = nil
 f:SetScript("OnUpdate", function(self, elapsed)
     box1.texture:SetColorTexture(0, 0, 0, 1)
      local skilluse= IsUsableSpell("Sinister Strike")
-    
+
     if IsInGroup() then
 
          if UnitAffectingCombat("party1") then
+            local comboPoints = GetComboPoints("player", "target")
             box1.texture:SetColorTexture(1, 1, 0, 1) 
                 if not currentFollowTarget then
                     box1.texture:SetColorTexture(1, 1, 1, 1)
@@ -27,7 +28,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
                     print("your target is full hp.")
                      box1.texture:SetColorTexture(0, 0, 0, 1)
                 
-                    local comboPoints = GetComboPoints("player", "target")
+                    
                 elseif comboPoints >= 3 then 
               
                         print("can cast finisher!!")
