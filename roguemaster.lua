@@ -10,25 +10,17 @@ local f = CreateFrame("Frame")
 f:SetScript("OnUpdate", function(self, elapsed)
     box1.texture:SetColorTexture(0, 0, 0, 1)
      local skilluse= IsUsableSpell("Claw")
-    if UnitAffectingCombat("player") then
+    if UnitAffectingCombat("party1") then
         print("You are in combat!")
          box1.texture:SetColorTexture(1, 1, 0, 1)
 
-        local health, maxHealth = UnitHealth("target"), UnitHealthMax("target")
-       
-
-
-        if UnitExists("target") and health == maxHealth then
-            print("Your target is at full health.")
-            box1.texture:SetColorTexture(1, 1, 0, 1)
-       
-        elseif not (UnitExists("target") and UnitExists("party1target")) then
-               print("you are not targeting the leader target.")
-                box1.texture:SetColorTexture(0, 1, 1, 1)
-        elseif not IsCurrentSpell("Attack") then
+        if not IsCurrentSpell("Attack") then
              print("You are not auto-attacking.")
                 box1.texture:SetColorTexture(0, 1, 0, 1)
-
+        elseif not UnitIsUnit("target", "party1target") then
+                print("You are NOT targeting the same target as party1.")
+                box1.texture:SetColorTexture(0, 1, 1, 1)
+        
         elseif skilluse then
               
                 local comboPoints = GetComboPoints("player", "target")
@@ -76,3 +68,16 @@ f:SetScript("OnUpdate", function(self, elapsed)
 
 
 end)
+
+
+        -- local health, maxHealth = UnitHealth("target"), UnitHealthMax("target")
+       
+
+
+        -- if UnitExists("target") and health == maxHealth then
+        --     print("Your target is at full health.")
+        --     box1.texture:SetColorTexture(1, 1, 0, 1)
+       
+        -- elseif not (UnitExists("target") and UnitExists("party1target")) then
+        --        print("you are not targeting the leader target.")
+        --         box1.texture:SetColorTexture(0, 1, 1, 1)
