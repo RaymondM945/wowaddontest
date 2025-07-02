@@ -12,12 +12,14 @@ f:SetScript("OnUpdate", function(self, elapsed)
      local skilluse= IsUsableSpell("Sinister Strike")
 
     if IsInGroup() then
-
+         
          if UnitAffectingCombat("party1") then
             local comboPoints = GetComboPoints("player", "target")
             box1.texture:SetColorTexture(1, 1, 0, 1) 
-                if not currentFollowTarget then
-                    box1.texture:SetColorTexture(1, 1, 1, 1)
+                if comboPoints >= 3 then 
+              
+                    print("can cast finisher!!")
+                    box1.texture:SetColorTexture(1, 0, 0, 1)
                 elseif not IsCurrentSpell("Attack") then
                     print("You are not auto-attacking.")
                     box1.texture:SetColorTexture(0, 1, 0, 1)
@@ -29,14 +31,14 @@ f:SetScript("OnUpdate", function(self, elapsed)
                      box1.texture:SetColorTexture(0, 0, 0, 1)
                 
                     
-                elseif comboPoints >= 3 then 
-              
-                        print("can cast finisher!!")
-                        box1.texture:SetColorTexture(1, 0, 0, 1)
+
 
                 elseif skilluse then
                          print("You have enough energy for Claw!")
                         box1.texture:SetColorTexture(0, 1, 1, 1)
+
+                elseif not currentFollowTarget then
+                    box1.texture:SetColorTexture(1, 1, 1, 1)
                 end
 
 
