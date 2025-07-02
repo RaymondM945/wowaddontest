@@ -26,15 +26,16 @@ f:SetScript("OnUpdate", function(self, elapsed)
                 elseif UnitHealth("target") == UnitHealthMax("target") then
                     print("your target is full hp.")
                      box1.texture:SetColorTexture(0, 0, 0, 1)
-                elseif skilluse then
+                
                     local comboPoints = GetComboPoints("player", "target")
-                    if comboPoints >= 3 then
+                elseif comboPoints >= 3 then 
+              
                         print("can cast finisher!!")
                         box1.texture:SetColorTexture(1, 0, 0, 1)
-                    else 
-                        print("You have enough energy for Claw!")
+
+                elseif skilluse then
+                         print("You have enough energy for Claw!")
                         box1.texture:SetColorTexture(0, 1, 1, 1)
-                    end
                 end
 
 
