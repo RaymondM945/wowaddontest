@@ -1,0 +1,8 @@
+## Interface: 11507
+## Title: roguemaster
+## Notes: Displays a black box in the center
+## Author: You
+## Version: 1.0
+
+roguemaster.lua
+
